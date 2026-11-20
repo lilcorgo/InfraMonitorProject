@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -74,12 +76,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'infra_monitor_db',
-	'USER': 'eugene_dbuser',
-	'PASSWORD' : 'Eugene2026!SecurePass',
-	'HOST': 'localhost',
-	'PORT': '5432',
+        'ENGINE': 	'django.db.backends.postgresql',
+        'NAME': 	os.getenv('DB_NAME', default='postgres'),
+	'USER': 	os.getenv('DB_USER' default='postgres'),
+	'PASSWORD': 	os.getenv('DB_PASSWORD' default='postgres'),
+	'HOST': 	os.getenv('DB_HOST' default='postgres'),
+	'PORT': 	os.getnv('DB_PORT' default='5432'),
     }
 }
 
