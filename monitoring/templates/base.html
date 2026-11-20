@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}InfraMonitor{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        {% include 'includes/header.html' %}
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Хлебные крошки">
+                {% if request.resolver_match.url_name == 'index' %}
+                    <span>Главная</span>
+                {% else %}
+                    <a href="{% url 'monitoring:index' %}">Главная</a>
+                    <span> / </span>
+                    <span>{{ title }}</span>
+                {% endif %}
+            </nav>
+
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        {% include 'includes/footer.html' %}
+    </footer>
+</body>
+</html>

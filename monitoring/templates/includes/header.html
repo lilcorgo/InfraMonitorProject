@@ -1,0 +1,32 @@
+<div class="container header-inner">
+    <a class="logo" href="{% url 'monitoring:index' %}">
+        InfraMonitor
+    </a>
+
+    <nav class="main-nav">
+        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+           href="{% url 'monitoring:index' %}">
+            Главная
+        </a>
+
+        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+           href="{% url 'monitoring:about' %}">
+            О проекте
+        </a>
+
+        <a class="nav-link {% if request.resolver_match.url_name == 'nodes_list' %}active{% endif %}"
+           href="{% url 'monitoring:nodes_list' %}">
+            Узлы
+        </a>
+
+        <a class="nav-link {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}"
+           href="{% url 'monitoring:contacts' %}">
+            Контакты
+        </a>
+
+        <a class="nav-link {% if request.resolver_match.url_name == 'health' %}active{% endif %}"
+           href="{% url 'monitoring:health' %}">
+            Статус
+        </a>
+    </nav>
+</div>
