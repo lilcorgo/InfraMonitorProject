@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'monitoring',
 ]
 
 MIDDLEWARE = [
@@ -53,10 +55,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 	'django.db.backends.postgresql',
         'NAME': 	os.getenv('DB_NAME', default='postgres'),
-	'USER': 	os.getenv('DB_USER' default='postgres'),
-	'PASSWORD': 	os.getenv('DB_PASSWORD' default='postgres'),
-	'HOST': 	os.getenv('DB_HOST' default='postgres'),
-	'PORT': 	os.getnv('DB_PORT' default='5432'),
+	'USER': 	os.getenv('DB_USER', default='postgres'),
+	'PASSWORD': 	os.getenv('DB_PASSWORD', default='postgres'),
+	'HOST': 	os.getenv('DB_HOST', default='postgres'),
+	'PORT': 	os.getenv('DB_PORT', default='5432'),
     }
 }
 
