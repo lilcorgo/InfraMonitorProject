@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h1 class="page-title">{{ title }}</h1>
+        <p>{{ description }}</p>
+        <p>
+            Проект разрабатывается на Django с использованием PostgreSQL.
+            В качестве источников данных мониторинга планируется использовать Zabbix и Prometheus.
+        </p>
+    </section>
+{% endblock %}

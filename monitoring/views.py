@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 def index(request):
@@ -8,7 +7,7 @@ def index(request):
         'title': 'Главная InfraMonitor',
 	'message': 'Добро пожаловать в систему мониторинга ИТ-инфраструктуры',
     }
-    return render(request, 'monitoring/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def about(request):
@@ -17,7 +16,7 @@ def about(request):
 	'title': 'О проекте InfraMonitor',
 	'message': 'Веб-портал для централизованного мониторинга серверов на базе Zabbix и Prometheus.',
     }
-    return render(request, 'monitoring/about.html', context)
+    return render(request, 'about.html', context)
 
 
 def nodes_list(request):
@@ -31,7 +30,7 @@ def nodes_list(request):
         'title': 'Узлы мониторинга',
         'nodes': nodes,
     }
-    return render(request, 'monitoring/nodes_list.html', context)
+    return render(request, 'nodes_list.html', context)
 
 
 def contacts(request):
@@ -39,9 +38,18 @@ def contacts(request):
     context = {
         'title': 'Контакты - InfraMonitor',
     }
-    return render(request, 'monitoring/contacts.html', context)
+    return render(request, 'contacts.html', context)
 
 
 def health_check(request):
     """Страница для проверки, что Django работает"""
-    return HttpResponse('<h1>InfraMonitor работает!</h1><p>Время сервера: OK</p>')
+    context = {
+        'title': 'Проверка работоспособности',
+        'status': 'OK',
+        'checks': [
+            {'name': 'Django-приложение', 'value': 'Работает'},
+            {'name': 'HTML-шаблоны', 'value': 'Подключены'},
+            {'name': 'Статические файлы', 'value': 'Подключены'},
+        ],
+    }
+    return render(request, 'health.html', context)

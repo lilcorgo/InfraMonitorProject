@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h1 class="page-title">{{ title }}</h1>
+        <p>Контактная информация автора проекта:</p>
+        <ul>
+            <li>Email: eugene.ditkovsky@gmail.com</li>
+            <li>
+                GitHub:
+                <a href="https://github.com/lilcorgo/InfraMonitorProject">
+                    lilcorgo/InfraMonitorProject
+                </a>
+            </li>
+        </ul>
+        <p>
+            Форма обратной связи будет реализована отдельным шагом через Django-форму
+            с сохранением сообщений в базу данных.
+        </p>
+    </section>
+{% endblock %}

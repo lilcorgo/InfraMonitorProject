@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h1 class="page-title">{{ title }}</h1>
+        <p>{{ message }}</p>
+        <p>
+            InfraMonitor — учебный веб-портал для централизованного просмотра состояния
+            серверов, сервисов и событий мониторинга.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Назначение портала</h2>
+        <p>
+            Сайт объединяет данные инфраструктуры в одном интерфейсе и позволяет
+            постепенно перейти от ручной проверки серверов к единой точке контроля.
+        </p>
+    </section>
+{% endblock %}

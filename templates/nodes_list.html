@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h1 class="page-title">{{ title }}</h1>
+        <p>
+            На странице отображается список узлов лабораторной инфраструктуры.
+            Позже данные будут загружаться из PostgreSQL и систем мониторинга.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Имя хоста</th>
+                        <th>IP-адрес</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for node in nodes %}
+                        <tr>
+                            <td>{{ node.hostname }}</td>
+                            <td>{{ node.ip }}</td>
+                            <td class="status status-{{ node.status|lower }}">
+                                {{ node.status }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

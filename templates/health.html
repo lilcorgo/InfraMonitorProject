@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h1 class="page-title">{{ title }}</h1>
+        <p>Текущий статус приложения: <strong>{{ status }}</strong></p>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Компонент</th>
+                        <th>Состояние</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for check in checks %}
+                        <tr>
+                            <td>{{ check.name }}</td>
+                            <td>{{ check.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
