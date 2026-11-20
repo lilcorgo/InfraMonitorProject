@@ -1,0 +1,18 @@
+# Виртуальное окружение Python
+venv/
+env/
+.venv/
+
+# Файлы базы данных (если будем использовать SQLite для локальных тестов)
+*.sqlite3
+*.sqlite3-journal
+
+# Системные файлы и кэш
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+
+# Файлы IDE
+.vscode/
+.idea/
